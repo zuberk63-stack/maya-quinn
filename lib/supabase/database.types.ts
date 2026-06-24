@@ -12,6 +12,18 @@ export type Database = {
           category: string | null;
           status: string;
           source: string;
+          raw_text: string | null;
+          source_url: string | null;
+          source_name: string | null;
+          keyword_embedding: unknown | null;
+          is_evergreen: boolean | null;
+          is_us_audience: boolean | null;
+          is_beginner_friendly: boolean | null;
+          is_low_competition: boolean | null;
+          filter_reason: string | null;
+          discovered_at: string;
+          duplicate_of: string | null;
+          duplicate_similarity: number | null;
           notes: string | null;
           ai_filter_score: number | null;
           cluster_id: string | null;
@@ -21,6 +33,7 @@ export type Database = {
         };
         Insert: Partial<Database["public"]["Tables"]["topics"]["Row"]> & { keyword: string };
         Update: Partial<Database["public"]["Tables"]["topics"]["Row"]>;
+        Relationships: [];
       };
       research: {
         Row: {
@@ -40,6 +53,7 @@ export type Database = {
           source_url: string;
         };
         Update: Partial<Database["public"]["Tables"]["research"]["Row"]>;
+        Relationships: [];
       };
       articles: {
         Row: {
@@ -69,6 +83,7 @@ export type Database = {
           content: string;
         };
         Update: Partial<Database["public"]["Tables"]["articles"]["Row"]>;
+        Relationships: [];
       };
       review_queue: {
         Row: {
@@ -85,13 +100,14 @@ export type Database = {
         };
         Insert: Partial<Database["public"]["Tables"]["review_queue"]["Row"]> & { article_id: string };
         Update: Partial<Database["public"]["Tables"]["review_queue"]["Row"]>;
+        Relationships: [];
       };
-      facts: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown> };
-      article_facts: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown> };
-      clusters: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown> };
-      authors: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown> };
-      content_refresh_log: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown> };
-      cost_tracking: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown> };
+      facts: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown>; Relationships: [] };
+      article_facts: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown>; Relationships: [] };
+      clusters: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown>; Relationships: [] };
+      authors: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown>; Relationships: [] };
+      content_refresh_log: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown>; Relationships: [] };
+      cost_tracking: { Row: Record<string, unknown>; Insert: Record<string, unknown>; Update: Record<string, unknown>; Relationships: [] };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

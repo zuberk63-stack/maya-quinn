@@ -24,3 +24,23 @@ Visit `http://localhost:3000/admin/login` and request a magic link for an email 
 - Protected admin dashboard.
 - SQL migration for `topics`, `research`, `articles`, `review_queue`, `facts`, `article_facts`, `clusters`, `authors`, `content_refresh_log`, and `cost_tracking`.
 - RLS that lets anonymous users read only `articles` where `status = 'published'`; all writes and protected reads require an authenticated admin claim.
+
+## Phase 2 Topic Discovery
+
+The daily job lives at `GET /api/cron/topic-discovery` and is scheduled in `vercel.json` for 09:00 UTC.
+
+Required server-only environment variables:
+
+```bash
+SUPABASE_SERVICE_ROLE_KEY=...
+CRON_SECRET=...
+GEMINI_API_KEY=...
+```
+
+Run manually:
+
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" http://localhost:3000/api/cron/topic-discovery
+```
+
+The job pulls official agency news pages/RSS, Google News RSS, and Google Trends via `google-trends-api`. It embeds each keyword with Gemini, skips candidates with cosine similarity above `0.92` against topics from the last 90 days, then stores Gemini topic-filter results as `filtered_pending` or `rejected`. It never auto-approves topics.
