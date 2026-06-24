@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Maya Quinn — Article Page Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14213D;
+    --ink-soft:#3A3D45;
+    --paper:#F6F7F9;
+    --card:#FFFFFF;
+    --gold:#C89B3C;
+    --gold-light:#E0B563;
+    --gold-deep:#7C5C1E;
+    --gold-tint:#FBF3E1;
+    --teal:#2D6A6A;
+    --teal-deep:#1D4747;
+    --teal-tint:#E8F2F1;
+    --rose:#C2554F;
+    --rose-deep:#8C3A35;
+    --rose-tint:#FBEAE8;
+    --blue:#3B6FA0;
+    --blue-deep:#234A6B;
+    --blue-tint:#E8F0F8;
+    --muted:#6B6F76;
+    --hairline:#E3E1DC;
+    --font-display:'Fraunces',serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);font-family:var(--font-body);color:var(--ink-soft);}
+  .page{max-width:1080px;margin:0 auto;}
+
+  header{background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--hairline);position:sticky;top:0;z-index:10;}
+  .header-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;}
+  .logo{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:23px;color:var(--ink);letter-spacing:0.2px;display:flex;align-items:center;gap:7px;}
+  .logo .dotmark{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));display:inline-block;}
+  nav{display:flex;gap:30px;align-items:center;}
+  nav a{font-size:13.5px;color:var(--ink-soft);text-decoration:none;font-weight:600;position:relative;padding-bottom:3px;}
+  nav a.active{color:var(--gold-deep);}
+  nav a.active::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:linear-gradient(90deg,var(--gold-light),var(--gold-deep));border-radius:2px;}
+  nav a.search{width:32px;height:32px;border:1px solid var(--hairline);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;}
+
+  .hero{position:relative;overflow:hidden;padding:68px 28px 56px;background:linear-gradient(135deg,#0B1530 0%,#16264A 50%,#1F3258 100%);}
+  .hero::before{content:'';position:absolute;top:-140px;right:-100px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,71,0.38) 0%,rgba(212,168,71,0) 70%);pointer-events:none;}
+  .hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.07) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;}
+  .hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
+  .eyebrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:1.4px;color:#3A2A06;background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:6px 13px;border-radius:20px;text-transform:uppercase;font-weight:600;box-shadow:0 4px 16px rgba(200,155,60,0.35);}
+  h1{font-family:var(--font-display);font-weight:600;font-size:42px;line-height:1.16;color:#FFFFFF;margin:22px 0 24px;letter-spacing:-0.4px;}
+  .byline{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,0.72);}
+  .avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));color:#2A1F08;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:700;}
+  .byline b{color:#FFFFFF;font-weight:600;}
+  .dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,0.3);}
+  .reviewed{display:inline-flex;align-items:center;gap:5px;color:#EAD08F;font-weight:600;}
+
+  .body-wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 250px;gap:52px;padding:44px 28px 84px;}
+  article{max-width:680px;}
+  article p{font-size:16.5px;line-height:1.78;color:var(--ink-soft);margin:0 0 20px;}
+  h2{font-family:var(--font-display);font-weight:600;font-size:25px;color:var(--ink);margin:38px 0 15px;}
+
+  .fact{display:inline-flex;align-items:baseline;gap:5px;font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--gold-deep);background:linear-gradient(135deg,#FCE9C0,#F6D89A);padding:3px 9px 3px 8px;border-radius:7px;box-shadow:0 1px 5px rgba(200,155,60,0.3),inset 0 0 0 1px rgba(200,155,60,0.25);white-space:nowrap;}
+  .fact .src{font-family:var(--font-body);font-weight:700;font-size:9.5px;letter-spacing:0.5px;color:var(--gold-deep);opacity:0.7;}
+  .fact .check{font-size:11px;}
+
+  .chart-card{background:var(--card);border:1px solid var(--hairline);border-radius:16px;padding:26px 28px 20px;margin:30px 0;box-shadow:0 4px 20px rgba(20,33,61,0.07);}
+  .chart-title{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:20px;}
+  .bars{display:flex;align-items:flex-end;gap:20px;height:124px;border-bottom:1px solid var(--hairline);}
+  .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .bar{width:100%;max-width:48px;background:linear-gradient(180deg,#2A3F6B,#14213D);border-radius:5px 5px 0 0;box-shadow:0 -2px 6px rgba(20,33,61,0.15);}
+  .bar.current{background:linear-gradient(180deg,var(--gold-light),var(--gold-deep));box-shadow:0 -2px 10px rgba(200,155,60,0.45);}
+  .bar-val{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-soft);margin-bottom:7px;font-weight:700;}
+  .bar-year{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);margin-top:9px;}
+  .chart-note{font-size:11.5px;color:var(--muted);margin-top:12px;}
+
+  .callout{display:flex;gap:13px;background:linear-gradient(135deg,var(--teal-tint),#DFF0EE);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:17px 19px;margin:26px 0;box-shadow:0 3px 14px rgba(45,106,106,0.08);}
+  .callout .icon{width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;}
+  .callout p{margin:0;font-size:14.5px;line-height:1.6;color:var(--teal-deep);}
+  .callout b{color:var(--ink);}
+
+  aside{position:sticky;top:96px;align-self:start;}
+  .toc{border-left:2px solid var(--hairline);padding-left:17px;margin-bottom:28px;}
+  .toc-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;font-weight:600;}
+  .toc a{display:block;font-size:13.5px;color:var(--ink-soft);text-decoration:none;padding:6px 0;line-height:1.4;}
+  .toc a.active{color:var(--gold-deep);font-weight:700;}
+
+  .verified-box{background:linear-gradient(150deg,#14213D,#1D4747);border-radius:16px;padding:18px 20px;color:#fff;box-shadow:0 8px 24px rgba(20,33,61,0.25);}
+  .verified-box .vt{font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+  .verified-box .vt span{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#3A2A06;display:flex;align-items:center;justify-content:center;font-size:11px;}
+  .verified-box p{font-size:12px;line-height:1.55;color:#C9CEDA;margin:0;}
+
+  .related-label{font-family:var(--font-mono);font-size:11px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;padding:0 28px;margin-bottom:16px;max-width:1080px;margin-left:auto;margin-right:auto;font-weight:600;}
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:0 28px 64px;max-width:1080px;margin:0 auto;}
+  .rcard{background:var(--card);border:1px solid var(--hairline);border-radius:14px;padding:20px;box-shadow:0 3px 14px rgba(20,33,61,0.06);border-top:4px solid var(--accent);transition:transform 0.15s ease,box-shadow 0.15s ease;}
+  .rcard:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,33,61,0.12);}
+  .rcard.cat-retire{--accent:var(--gold);}
+  .rcard.cat-tax{--accent:var(--teal);}
+  .rcard.cat-credit{--accent:var(--rose);}
+  .rcard .cat{font-family:var(--font-mono);font-size:10px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:9px;font-weight:700;}
+  .rcard.cat-retire .cat{color:var(--gold-deep);}
+  .rcard.cat-tax .cat{color:var(--teal-deep);}
+  .rcard.cat-credit .cat{color:var(--rose-deep);}
+  .rcard h3{font-family:var(--font-display);font-size:16.5px;font-weight:600;color:var(--ink);margin:0;line-height:1.35;}
+
+  footer{border-top:1px solid var(--hairline);padding:26px;text-align:center;position:relative;}
+  footer::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:140px;height:2px;background:linear-gradient(90deg,var(--gold),var(--teal));border-radius:2px;}
+  footer p{font-size:12px;color:var(--muted);margin:0;}
+  footer a{color:var(--muted);margin:0 8px;text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="header-inner">
+      <div class="logo"><span class="dotmark"></span>Maya Quinn</div>
+      <nav>
+        <a href="#">Credit</a>
+        <a class="active" href="#">Retirement</a>
+        <a href="#">Taxes</a>
+        <a href="#">Banking</a>
+        <a class="search" href="#">⌕</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Retirement</span>
+      <h1>2026 401(k) contribution limits: what changed and what it means for you</h1>
+      <div class="byline">
+        <div class="avatar">MQ</div>
+        <span><b>Maya Quinn</b> · AI Finance Analyst</span>
+        <span class="dot"></span>
+        <span class="reviewed">✓ Reviewed by Sarah Chen, CFP®</span>
+        <span class="dot"></span>
+        <span>Updated Jun 2026</span>
+        <span class="dot"></span>
+        <span>6 min read</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+    <article>
+      <p>Every year the IRS adjusts how much you're allowed to put into a 401(k), and missing the new number is an easy way to leave free money on the table. Here's exactly what changed for 2026, and how it compares to recent years.</p>
+
+      <h2>The new limit</h2>
+      <p>For 2026, the employee contribution limit is <span class="fact"><span class="check">✓</span>$24,000<span class="src">IRS</span></span> — up from <span class="fact"><span class="check">✓</span>$23,000<span class="src">IRS</span></span> in 2025. If you're <span class="fact"><span class="check">✓</span>50 or older<span class="src">IRS</span></span>, you can add a catch-up contribution of <span class="fact"><span class="check">✓</span>$8,000<span class="src">IRS</span></span> on top of that.</p>
+
+      <div class="chart-card">
+        <div class="chart-title">Employee contribution limit, 2022–2026</div>
+        <div class="bars">
+          <div class="bar-col"><div class="bar-val">$20.5k</div><div class="bar" style="height:74%"></div><div class="bar-year">2022</div></div>
+          <div class="bar-col"><div class="bar-val">$22.5k</div><div class="bar" style="height:82%"></div><div class="bar-year">2023</div></div>
+          <div class="bar-col"><div class="bar-val">$23k</div><div class="bar" style="height:86%"></div><div class="bar-year">2024</div></div>
+          <div class="bar-col"><div class="bar-val">$23k</div><div class="bar" style="height:86%"></div><div class="bar-year">2025</div></div>
+          <div class="bar-col"><div class="bar-val">$24k</div><div class="bar current" style="height:100%"></div><div class="bar-year">2026</div></div>
+        </div>
+        <div class="chart-note">Rendered directly from verified IRS figures — not estimated.</div>
+      </div>
+
+      <div class="callout">
+        <span class="icon">i</span>
+        <p><b>Why this matters:</b> if your contributions are set as a flat dollar amount instead of a percentage, you won't automatically hit the new limit — you'd need to update it yourself in your plan.</p>
+      </div>
+
+      <h2>Who qualifies for the catch-up amount</h2>
+      <p>The catch-up contribution applies to anyone who turns 50 at any point during the calendar year, not just those already 50 on January 1st. This is one of the most commonly misunderstood rules in retirement planning.</p>
+    </article>
+
+    <aside>
+      <div class="toc">
+        <div class="toc-label">On this page</div>
+        <a class="active" href="#">The new limit</a>
+        <a href="#">Who qualifies for catch-up</a>
+        <a href="#">How this compares to an IRA</a>
+        <a href="#">Common mistakes</a>
+      </div>
+      <div class="verified-box">
+        <div class="vt"><span>✓</span> Every number, sourced</div>
+        <p>Figures on this page are pulled directly from IRS.gov and cross-checked before publishing. Tap any highlighted number to see its source.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="related-label">Related guides</div>
+  <div class="related-grid">
+    <div class="rcard cat-retire"><div class="cat">Retirement</div><h3>Roth IRA vs traditional 401(k): which one first?</h3></div>
+    <div class="rcard cat-retire"><div class="cat">Retirement</div><h3>What happens to your 401(k) when you switch jobs</h3></div>
+    <div class="rcard cat-tax"><div class="cat">Taxes</div><h3>How 401(k) contributions lower your taxable income</h3></div>
+  </div>
+
+  <footer>
+    <p>Maya Quinn is an AI-assisted publication. Content is researched and drafted with AI, fact-checked against official sources, and reviewed by a named human before publishing.
+    <br><a href="#">Privacy policy</a> · <a href="#">Editorial policy</a> · <a href="#">Terms</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
